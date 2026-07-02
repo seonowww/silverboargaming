@@ -1,0 +1,123 @@
+---
+const reviews = [
+  {
+    name: "Sarah Johnson",
+    role: "CTO, TechStart Inc.",
+    text: "Hurrian Network transformed our infrastructure. Their expertise in cloud solutions helped us reduce costs by 40% while improving performance.",
+    rating: 5
+  },
+  {
+    name: "Michael Chen",
+    role: "Founder, DataFlow Systems",
+    text: "Working with Hurrian Network was a game-changer. They delivered our project on time and exceeded our expectations.",
+    rating: 5
+  },
+  {
+    name: "Emily Rodriguez",
+    role: "VP of Operations, GlobalTech",
+    text: "Professional, reliable, and innovative. Hurrian Network has been an invaluable partner in our digital transformation journey.",
+    rating: 5
+  },
+  {
+    name: "David Park",
+    role: "Director of IT, InnovateCorp",
+    text: "Their team went above and beyond to understand our needs. The custom solution they built perfectly fits our workflow.",
+    rating: 5
+  },
+  {
+    name: "Amanda Foster",
+    role: "CEO, NextGen Solutions",
+    text: "Exceptional service and support. Hurrian Network helped us modernize our entire technology stack.",
+    rating: 5
+  },
+  {
+    name: "Robert Kim",
+    role: "Managing Partner, Digital First",
+    text: "Highly recommend Hurrian Network. Their expertise and dedication are unmatched in the industry.",
+    rating: 5
+  }
+];
+
+// Randomize and select 3 reviews
+const shuffledReviews = reviews.sort(() => Math.random() - 0.5);
+const selectedReviews = shuffledReviews.slice(0, 3);
+---
+
+<section class="reviews-section">
+  <h2>What Our Clients Say</h2>
+  
+  <div class="reviews-grid">
+    {selectedReviews.map(review => (
+      <article class="review-card">
+        <div class="stars">
+          {'★'.repeat(review.rating)}
+        </div>
+        <blockquote>"{review.text}"</blockquote>
+        <footer>
+          <cite>— {review.name}</cite>
+          <span class="role">{review.role}</span>
+        </footer>
+      </article>
+    ))}
+  </div>
+</section>
+
+<style>
+  .reviews-section {
+    padding: 4rem 0;
+    background: #f9f9f9;
+  }
+  
+  h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: #1a1a2e;
+  }
+  
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .review-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid #eee;
+  }
+  
+  .stars {
+    color: #ffc107;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+  
+  blockquote {
+    font-style: italic;
+    color: #444;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+  }
+  
+  footer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  
+  cite {
+    font-weight: 600;
+    color: #1a1a2e;
+    font-style: normal;
+  }
+  
+  .role {
+    font-size: 0.875rem;
+    color: #666;
+  }
+</style>

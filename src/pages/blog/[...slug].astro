@@ -1,0 +1,171 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  
+  return posts.map(post => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+
+<Layout title={post.data.title} description={post.data.description}>
+  <article class="blog-post">
+    <header>
+      <div class="meta">
+        <time datetime={post.data.pubDate.toISOString()}>
+          {post.data.pubDate.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+          })}
+        </time>
+        <span class="category">{post.data.category}</span>
+      </div>
+      <h1>{post.data.title}</h1>
+      <p class="description">{post.data.description}</p>
+      <div class="author">By {post.data.author}</div>
+    </header>
+    
+    <div class="content">
+      <Content />
+    </div>
+    
+    <footer>
+      <div class="tags">
+        {post.data.tags.map(tag => (
+          <span class="tag">#{tag}</span>
+        ))}
+      </div>
+      
+      {post.data.referenceUrl && (
+        <div class="reference">
+          <p>For more information, check out our <a href={post.data.referenceUrl}>partner resource</a>.</p>
+        </div>
+      )}
+    </footer>
+  </article>
+</Layout>
+
+<style>
+  .blog-post {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  
+  header {
+    margin-bottom: 3rem;
+    text-align: center;
+  }
+  
+  .meta {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.875rem;
+    color: #666;
+  }
+  
+  .category {
+    background: #4f46e5;
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    color: #1a1a2e;
+  }
+  
+  .description {
+    font-size: 1.25rem;
+    color: #666;
+    margin-bottom: 1.5rem;
+  }
+  
+  .author {
+    font-weight: 600;
+    color: #444;
+  }
+  
+  .content {
+    line-height: 1.8;
+    font-size: 1.1rem;
+  }
+  
+  .content :global(h2) {
+    font-size: 1.75rem;
+    margin: 2rem 0 1rem;
+    color: #1a1a2e;
+  }
+  
+  .content :global(h3) {
+    font-size: 1.5rem;
+    margin: 1.5rem 0 0.75rem;
+    color: #1a1a2e;
+  }
+  
+  .content :global(p) {
+    margin-bottom: 1.5rem;
+    color: #444;
+  }
+  
+  .content :global(ul), .content :global(ol) {
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+  }
+  
+  .content :global(li) {
+    margin-bottom: 0.5rem;
+    color: #444;
+  }
+  
+  .content :global(a) {
+    color: #4f46e5;
+  }
+  
+  footer {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid #eee;
+  }
+  
+  .tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+  }
+  
+  .tag {
+    background: #f0f0f0;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    color: #666;
+  }
+  
+  .reference {
+    background: #f9f9f9;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid #4f46e5;
+  }
+  
+  .reference a {
+    color: #4f46e5;
+  }
+</style>

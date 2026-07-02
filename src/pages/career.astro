@@ -1,0 +1,287 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const positions = [
+  {
+    title: "Senior Cloud Engineer",
+    location: "Remote",
+    type: "Full-time",
+    department: "Engineering",
+    description: "We're looking for an experienced Cloud Engineer to design and implement cloud infrastructure solutions for our enterprise clients."
+  },
+  {
+    title: "DevOps Specialist",
+    location: "Remote",
+    type: "Full-time",
+    department: "Operations",
+    description: "Join our DevOps team to streamline deployment pipelines and improve infrastructure automation."
+  },
+  {
+    title: "Security Analyst",
+    location: "Remote",
+    type: "Full-time",
+    department: "Security",
+    description: "Help us protect our clients by monitoring threats and implementing security best practices."
+  },
+  {
+    title: "Solutions Architect",
+    location: "Remote",
+    type: "Full-time",
+    department: "Architecture",
+    description: "Design scalable solutions that meet our clients' business objectives."
+  }
+];
+---
+
+<Layout title="Careers - Hurrian Network" description="Join our team and help shape the future of technology.">
+  <section class="career-page">
+    <header class="page-header">
+      <h1>Join Our Team</h1>
+      <p>Help us transform how businesses leverage technology</p>
+    </header>
+    
+    <section class="benefits">
+      <h2>Why Work With Us?</h2>
+      <div class="benefits-grid">
+        <div class="benefit">
+          <span class="icon">🏠</span>
+          <h3>Remote First</h3>
+          <p>Work from anywhere in the world. We believe in results, not location.</p>
+        </div>
+        <div class="benefit">
+          <span class="icon">📚</span>
+          <h3>Learning & Growth</h3>
+          <p>Continuous learning opportunities with training budgets and conference attendance.</p>
+        </div>
+        <div class="benefit">
+          <span class="icon">💰</span>
+          <h3>Competitive Compensation</h3>
+          <p>Industry-leading salaries with performance-based bonuses.</p>
+        </div>
+        <div class="benefit">
+          <span class="icon">🏥</span>
+          <h3>Comprehensive Benefits</h3>
+          <p>Health insurance, retirement plans, and wellness programs.</p>
+        </div>
+        <div class="benefit">
+          <span class="icon">⚖️</span>
+          <h3>Work-Life Balance</h3>
+          <p>Flexible hours and unlimited PTO policy.</p>
+        </div>
+        <div class="benefit">
+          <span class="icon">🚀</span>
+          <h3>Impact</h3>
+          <p>Work on challenging projects that make a real difference.</p>
+        </div>
+      </div>
+    </section>
+    
+    <section class="positions">
+      <h2>Open Positions</h2>
+      <div class="positions-list">
+        {positions.map(position => (
+          <article class="position-card">
+            <div class="position-header">
+              <h3>{position.title}</h3>
+              <div class="tags">
+                <span class="tag location">{position.location}</span>
+                <span class="tag type">{position.type}</span>
+                <span class="tag department">{position.department}</span>
+              </div>
+            </div>
+            <p>{position.description}</p>
+            <a href={`/career/apply?position=${encodeURIComponent(position.title)}`} class="apply-button">Apply Now</a>
+          </article>
+        ))}
+      </div>
+    </section>
+    
+    <section class="cta">
+      <h2>Don't See the Right Role?</h2>
+      <p>We're always looking for talented individuals. Send your resume to careers@hurriannetwork.com</p>
+    </section>
+  </section>
+</Layout>
+
+<style>
+  .career-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  
+  .page-header {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: white;
+    border-radius: 16px;
+    margin-bottom: 4rem;
+  }
+  
+  .page-header h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .page-header p {
+    font-size: 1.25rem;
+    opacity: 0.9;
+  }
+  
+  .benefits {
+    margin-bottom: 4rem;
+  }
+  
+  .benefits h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: #1a1a2e;
+  }
+  
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+  
+  .benefit {
+    text-align: center;
+    padding: 2rem;
+    background: #f9f9f9;
+    border-radius: 12px;
+  }
+  
+  .benefit .icon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 1rem;
+  }
+  
+  .benefit h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+    color: #1a1a2e;
+  }
+  
+  .benefit p {
+    color: #666;
+    line-height: 1.7;
+  }
+  
+  .positions {
+    margin-bottom: 4rem;
+  }
+  
+  .positions h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: #1a1a2e;
+  }
+  
+  .positions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .position-card {
+    background: white;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+  
+  .position-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .position-header h3 {
+    font-size: 1.5rem;
+    color: #1a1a2e;
+  }
+  
+  .tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  
+  .tag {
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+  
+  .tag.location {
+    background: #e0e7ff;
+    color: #4f46e5;
+  }
+  
+  .tag.type {
+    background: #dcfce7;
+    color: #16a34a;
+  }
+  
+  .tag.department {
+    background: #fef3c7;
+    color: #d97706;
+  }
+  
+  .position-card p {
+    color: #666;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+  
+  .apply-button {
+    display: inline-block;
+    background: #4f46e5;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.3s;
+  }
+  
+  .apply-button:hover {
+    background: #4338ca;
+  }
+  
+  .cta {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: #f9f9f9;
+    border-radius: 16px;
+  }
+  
+  .cta h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #1a1a2e;
+  }
+  
+  .cta p {
+    color: #666;
+    font-size: 1.1rem;
+  }
+  
+  .cta a {
+    color: #4f46e5;
+    text-decoration: none;
+  }
+  
+  .cta a:hover {
+    text-decoration: underline;
+  }
+</style>

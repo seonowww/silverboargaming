@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+Disallow: /api/
+Disallow: /_astro/
+Disallow: /preview/
+
+Sitemap: https://hurriannetwork.com/sitemap.xml
