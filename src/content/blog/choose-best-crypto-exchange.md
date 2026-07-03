@@ -1,4 +1,5 @@
 ---
+heroImage: "https://v3b.fal.media/files/b/0aa0bf51/DKg4u6UjRASEhRv1IBO8X.jpg"
 title: "How to Choose the Best Crypto Exchange"
 description: "The crypto exchange you use shapes almost everything about your trading or investing experience: the price you pay, the assets you can access, the safety of you"
 pubDate: 2026-06-09
@@ -41,7 +42,7 @@ DEXs appeal to people who prioritize self-custody, privacy, and global access. T
 
 ## Security Should Be Non-Negotiable
 
-![Security lock and digital wallet interface](/path/to/security-image.jpg)
+![Security lock and digital wallet interface](/images/security-image.jpg)
 
 Before committing to a platform, look for evidence of strong security practices. Reputable exchanges typically publish proof-of-reserves, undergo third-party audits, and offer tools like two-factor authentication, whitelisting for withdrawals, and anti-phishing codes.
 
@@ -53,7 +54,7 @@ Government regulators have repeatedly warned investors to research platforms bef
 
 Fees can quietly eat into returns, especially if you trade often. Most platforms charge a mix of trading fees, deposit fees, and withdrawal fees. Some also apply spreads that are not always obvious at first glance.
 
-![Trading dashboard with fee comparison chart](/path/to/fee-chart.jpg)
+![Trading dashboard with fee comparison chart](/images/fee-chart.jpg)
 
 | Fee Type | Typical CEX Structure | Typical DEX Structure |
 |---|---|---|
